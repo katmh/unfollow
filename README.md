@@ -1,5 +1,29 @@
 # unfollow
 
+How to (somewhat programmatically) unfollow many people at once on various social media platforms
+
+## Facebook
+
+On the FB homepage, go to the left sidebar and click the 3-dot icon next to **News Feed**, then select **Edit Preferences**.
+
+![Screenshot of Facebook: News Feed > Edit Preferences](fb_menu.png)
+
+Then expand the section called "Unfollow people and groups to hide their posts"
+
+The following script clicks all the icons of people/groups/pages, thereby unfollowing each of them. It waits 2 seconds between each click to avoid Facebook blocking bot-like behavior. I adapted it from [this Gist](https://gist.github.com/renestalder/c5b77635bfbec8f94d28).
+
+```
+var unfollowButtons = document.querySelectorAll('div[aria-pressed="false"]');
+unfollowed = 0;
+for (var i = 0; i < unfollowButtons.length; i++) {
+  setTimeout(function(element) {
+    element.click();
+    unfollowed++;
+    console.log('Total unfollowed ' + unfollowed + ' out of ' + unfollowButtons.length)
+  }, i * 2000, unfollowButtons[i])
+}
+```
+
 ## Twitter
 
 Follow the instructions for this [Twitter CLI](https://github.com/sferik/t).
@@ -9,6 +33,8 @@ Personally I ran this command a bunch of times (with larger numbers for `head -#
 ```
 t followings -l --sort=tweeted | head -10 | awk '{print $1}' | xargs t unfollow -i
 ```
+
+I was following about ~800 people (I think) and ran into the rate limit once, which reset within 10 minutes.
 
 ## LinkedIn
 
