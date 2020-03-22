@@ -1,5 +1,15 @@
 # unfollow
 
+## Twitter
+
+Follow the instructions for this [Twitter CLI](https://github.com/sferik/t).
+
+Personally I ran this command a bunch of times (with larger numbers for `head -#`) since it was interesting to see who hadn't tweeted in the longest time.
+
+```
+t followings -l --sort=tweeted | head -10 | awk '{print $1}' | xargs t unfollow -i
+```
+
 ## LinkedIn
 
 From: [How can I unfollow all my contacts on LinkedIn at once?](https://webapps.stackexchange.com/questions/92383/how-can-i-unfollow-all-my-contacts-on-linkedin-at-once)
