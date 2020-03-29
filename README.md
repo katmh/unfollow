@@ -61,37 +61,4 @@ This might take a few sessions (refresh and run the script again).
 
 ## Instagram
 
-It's much easier to hit the rate limit for Instagram, so this is just tentative, but here's a script I wrote (similar to the Facebook one above):
-
-```
-var unfollowButtons = document.querySelector('[class="PZuss"]').querySelectorAll('[type="button"]')
-unfollowed = 0;
-unfollowButtons.forEach(function(btn) {
-  btn.click();
-  unfollowed++;
-  console.log('Total unfollows initiated ' + unfollowed + ' out of ' + unfollowButtons.length)
-})
-
-var dialogs = document.querySelectorAll('[role="dialog"]');
-var confirmButtons = [];
-confirmed = 0;
-dialogs.forEach(function(presentation) {
-  if (presentation.querySelector('button[tabindex="0"]') != null) {
-    confirmButtons.push(presentation.querySelector('button[tabindex="0"'));
-  }
-});
-for (var i = 0; i < confirmButtons.length; i++) {
-  console.log("Confirming unfollow " + i + " ...");
-  setTimeout(
-    function(element) {
-      element.click();
-      confirmed++;
-      console.log("Total unfollows confirmed " + confirmed + " out of " + confirmButtons.length);
-    },
-    Math.random() * 10000,
-    confirmButtons[i]
-  )
-}
-```
-
-This is for use in the browser. On your own profile, click on **Following** and run the script in your browser's console. The first part of the script will click all the "Unfollow" buttons that are visible, opening a bunch of overlays that ask you to confirm. The second part of the script selects all of those confirmation buttons and clicks them with random time delays in between.
+The fastest way known to mankind is to manually unfollow people, hit the ridiculously low rate limit, resume in a few hours, and repeat! >:(
