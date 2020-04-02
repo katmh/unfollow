@@ -61,4 +61,4 @@ This might take a few sessions (refresh and run the script again).
 
 ## Instagram
 
-The fastest way known to mankind is to manually unfollow people, hit the ridiculously low rate limit, resume in a few hours, and repeat! >:(
+The rate limit in a browser/desktop is super low, so I just unfollowed everyone manually in the app!
